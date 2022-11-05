@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="9f10de2a-e32f-468a-9630-6c7c142a0db5" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comunidadeimpressionadora/__init__.py" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeimpressionadora/__init__.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/comunidadeimpressionadora/routs.py" beforeDir="false" afterPath="$PROJECT_DIR$/comunidadeimpressionadora/routs.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

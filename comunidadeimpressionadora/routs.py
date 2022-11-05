@@ -1,10 +1,6 @@
 
-from enum import auto
-from fileinput import filename
-from re import S
-from turtle import pos
 from flask import render_template, redirect, url_for, request, flash, abort
-from comunidadeimpressionadora import app, database#, bcrypt
+from comunidadeimpressionadora import app, database, bcrypt
 from comunidadeimpressionadora.forms import FormCriarConta, FormLogin, FormEditarPerfil, FormCriarPost
 from comunidadeimpressionadora.functionss import salvar_imagem
 from comunidadeimpressionadora.models import Usuarios, Post
@@ -38,7 +34,7 @@ def login():
     form_criarconta = FormCriarConta()
     if form_login.validate_on_submit() and 'botao_submit_login' in request.form:
         usuario = Usuarios.query.filter_by(email=form_login.lemail.data).first()     
-        if usuario and  form_login.lsenha.data == usuario.senha:#bcrypt.check_password_hash(usuario.senha, form_login.lsenha.data):
+        if usuario and bcrypt.check_password_hash(usuario.senha, form_login.lsenha.data):
             login_user(usuario, remember=form_login.lembrar_dados.data)        
             flash(f'Você esta logado!', 'alert-success')        
             par_next = request.args.get('next')
@@ -55,7 +51,7 @@ def login():
     if form_criarconta.validate_on_submit() and 'botao_submit_criarconta' in request.form:
         par_next = request.args.get('next')
         #criar usuario
-        senha_criptografada = form_criarconta.senha.data#bcrypt.generate_password_hash(form_criarconta.senha.data)
+        senha_criptografada = bcrypt.generate_password_hash(form_criarconta.senha.data)
         print(senha_criptografada)
         usuario = Usuarios(username=form_criarconta.username.data.title(), email=form_criarconta.email.data, senha=senha_criptografada)
         #adicionar usuario a sessao
