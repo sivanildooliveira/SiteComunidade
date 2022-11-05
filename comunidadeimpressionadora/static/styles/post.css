@@ -1,0 +1,95 @@
+@charset "UTF-8";
+
+
+
+
+.post {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.212);
+}
+
+.post .foto-nome-cursos-data  {
+    display: flex;
+    padding: 5px;
+}
+
+.post .avatar {
+    width: 70px;
+    height: 70px;
+    margin: 0px;
+}
+
+.post .nome-cursos-data {
+    width: calc(100% - 70px);
+    
+}
+
+
+.post .nome {
+    display: block;
+    color: rgba(0, 0, 0, 0.486);
+    font-size: 1.2rem;
+}
+
+
+.post .data-hora {
+    display: block;
+    font-size: .8rem;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.post .div-cursos {
+    display: flex;
+    gap: .5rem;
+    overflow-x: scroll;
+}
+
+.post .div-cursos::-webkit-scrollbar {
+    display: none;
+}
+
+.post .cursos {
+    padding: 3px 5px;
+    font-size: .6rem;
+    font-weight: bold;
+    border-radius: 5px;
+    color: rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: rgba(52, 165, 52, 0.205);
+}
+
+
+.post hr {
+    margin: 2px;
+    color: rgba(0, 0, 0, 0.315);
+}
+
+.post .titulo {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: rgba(0, 0, 0, 0.377);
+}
+
+.post .corpo{
+    font-size: .95rem;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.post .roda-pe  {
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+
+}
+
+
+.post .roda-pe a, .post .roda-pe button {
+    width: auto;
+}

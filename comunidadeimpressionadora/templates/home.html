@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block head %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/home.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/post.css') }}">
+{% endblock %}
+
+{% block main %}
+
+    <h1 class="titulo-page-center">Comunidade Impressionadora - hashtag treimanentos</h1>
+    <h2 class="subtitulo-page-center">Alunos, esperts e a galera da Hashtag em um só lugar</h2>
+    <hr>
+
+    {% for post in posts %}
+        <div class="row border mt-4 p-1 post">
+            <div class="row">
+                <div class="avatar" style="background-image: url('{{ post.autor.retur_foto_perfil() }}');"></div>
+                <div class="nome-cursos-data">
+                    <strong class="nome">{{ post.autor.username }}</strong>
+                    <small class="data-hora"> Data de Publicação: {{ post.data_criacao.strftime("%d/%m/%Y - %H:%M") }}</small>
+                    <div class="div-cursos">
+                        {% for curso in post.autor.cursos.split(";") %}
+                            <span class="mt-1 cursos">{{ curso }}</span>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+            <hr>
+            <div class="row">
+                <a href="{{ url_for('exibir_post', id_post=post.id, pg='home') }}" class="mb-1 titulo">{{ post.titulo }}</a>
+                <p class="corpo">{{ post.corpo }} </p>
+            </div>
+            <div class="row roda-pe">
+
+            </div>
+        </div>
+    {% endfor %}
+    
+    
+
+{% endblock %}
+
+{% block script %}
+{% endblock %}

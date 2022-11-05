@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+
+{% block head %}
+
+    <link rel="stylesheet" href=" {{ url_for('static', filename='styles/usuarios.css') }}">
+
+{% endblock %}
+
+
+
+{% block main %}
+
+    
+    <h1 style="text-align: center;">Usuários</h1>
+    <hr>
+    {% for usuario in lista_usuarios %}
+        
+        <div class="user">
+            <div class="avatar" style="background-image: url('{{ usuario.retur_foto_perfil() }}'); width: 80px; height: 80px; margin: 0px;"></div>
+            <span>
+                <strong>{{ usuario.username }}</strong>
+                <br>{{ usuario.email }}
+                <br><a class="btn btn-success btn-posts" href="">Posts: {{ usuario.quant_posts() }}</a>
+
+            </span>
+            
+        </div>
+        <div class="cursos mt-1">
+            {% for curso in usuario.cursos.split(";") %}
+                {% if curso not in ("", "não informado") %}
+                    <span> {{ curso }}</span>
+                {% endif %}
+            {% endfor %}
+        </div>
+
+
+        <hr>
+        
+    {% endfor %}
+    
+
+{% endblock %}

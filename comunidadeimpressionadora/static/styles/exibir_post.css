@@ -1,0 +1,15 @@
+@charset "UTF-8";
+
+
+
+#edicao {
+    display: none;
+}
+
+#edicao.active {
+    display: block;
+}
+
+#edicao .corpo {
+    height: 10rem;
+}

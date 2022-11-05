@@ -1,0 +1,95 @@
+{% extends 'base.html' %}
+
+{% block head %}
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/perfil.css') }}">
+	<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styles/post.css') }}">
+{% endblock %}
+
+{% block main %}
+
+    <div id="pf" style="background: rgb(203, 253, 255) url('{{ bg_perfil }}') no-repeat fixed; background-size: cover;"></div>
+    
+    <div id="foto-name-edit">
+		<div id="img" class="avatar"  style="background-image: url('{{ current_user.retur_foto_perfil() }}')"></div>
+		<span id="nome">{{ current_user.username }}</span>
+		{% if not editor %}
+			<a href="{{ url_for('editar_perfil') }}">editar perfil</a>
+			<table id="info">
+
+				<thead>
+					<th class="sep">ID</th>
+					<th class="sep">Cursos</th>
+					<th>Post</th>
+				</thead>
+
+				<tbody>
+					<td class="sep">{{ current_user.id }}</td>
+
+					<td class="sep">
+						<button id="btn-cursos"> 
+							{{ current_user.quant_cursos() }}
+						</button>
+					</td>
+
+					<td>{{ current_user.quant_posts() }}</td>
+
+				</tbody>
+
+			</table>
+			<div id="list-cursos" class="row justify-content-center">
+				<div class="col" style="text-align: center;">
+					Cursos <br>
+					{% for curso in current_user.cursos.split(";") %}
+						
+						<button class="btn btn-success disabled mt-2">{{ curso }}</button>
+						
+					{% endfor %}
+				</div>
+			</div>
+		{% endif %}
+    </div>
+	{% if not editor %}
+		{% for post in current_user.posts %}
+			<div class="row border mt-4 p-1 post">
+				<div class="row">
+					<div class="avatar" style="background-image: url('{{ current_user.retur_foto_perfil() }}');"></div>
+					<div class="nome-cursos-data">
+						<strong class="nome">{{ post.autor.username }}</strong>
+						<small class="data-hora"> Data de Publicação: {{ post.data_hora_post() }}</small>
+					</div>
+				</div>
+				<hr>
+				<div class="row">
+					<a href="{{ url_for('exibir_post', id_post=post.id, pg='perfil') }}" class="mb-1 titulo">{{ post.titulo }}</a>
+					<p class="corpo">{{ post.corpo }} </p>
+				</div>
+				<div class="row roda-pe">
+					
+				</div>
+			</div>
+		{% endfor %}
+	{% endif %}
+
+	{% block form_editarperfil %}
+
+	{% endblock %}
+
+	
+
+	
+
+{% endblock %}
+
+{% block script %}
+	<script>
+		btn_cursos = document.getElementById('btn-cursos')
+
+		function abrirCursos() {
+			lista = document.getElementById('list-cursos')
+			lista.classList.toggle('active')
+		}
+
+		btn_cursos.addEventListener('click', abrirCursos)
+
+	</script>
+{% endblock %}

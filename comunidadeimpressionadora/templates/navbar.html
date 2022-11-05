@@ -1,0 +1,56 @@
+<header>
+
+    <div id="tit-btn-menu">
+        
+        <a id="logo" href="{{ url_for('home') }}">COMUNIDADE IMPRESSIONADORA</a>
+
+        <button id="btn-menu">
+            <span id="hamburger"></span>
+        </button>
+
+    </div>
+
+    <nav id="nav">
+        <div id="lmenu">
+            <ul id="menu-links">
+                <li><a href="{{ url_for('home') }}">Início</a></li>
+                <li><a href="{{ url_for('usuarios') }}">Usuários</a></li>
+                <li><a href="{{ url_for('contato') }}">Contatos</a></li>
+            </ul>
+            <ul id="menu-login">
+                {% if current_user.is_authenticated %}
+
+                    <li><a href="{{ url_for('criar_post') }}">Criar Post</a></li>
+                    <li><a href="{{ url_for('perfil') }}">Meu Perfil</a></li>
+                    <li><a class="sair" href="{{ url_for('sair') }}">Sair</a></li>
+
+                {% else %}
+
+                    <li><a href="{{ url_for('login') }}">Login</a></li>
+                    <li><a href="{{ url_for('login') }}">Criar Conta</a></li>
+
+                {% endif %}
+            </ul>
+        </div>
+    </nav>
+</header>
+
+
+
+
+{% block script %}
+    <script>
+
+        const btn_menu = document.getElementById('btn-menu')
+
+        function abrirMenu(event) {
+            const nav = document.getElementById('nav')
+
+            btn_menu.classList.toggle('active')
+            nav.classList.toggle('active')
+
+        }
+
+        btn_menu.addEventListener('click', abrirMenu)
+    </script>
+{% endblock %}
