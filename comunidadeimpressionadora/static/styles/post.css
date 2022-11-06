@@ -54,11 +54,11 @@
     font-size: .6rem;
     font-weight: bold;
     border-radius: 5px;
-    color: rgba(0, 0, 0, 0.5);
+    color: white;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    background-color: rgba(52, 165, 52, 0.205);
+    background-color: var(--cor4);
 }
 
 

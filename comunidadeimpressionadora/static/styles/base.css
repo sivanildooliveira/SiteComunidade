@@ -2,8 +2,12 @@
 
 
 :root {
-    --cor1: rgb(25, 158, 69);
-    --cor2: rgb(12, 75, 33);
+    --cor2: #090C08;
+    --cor1: #474056;
+    --cor3: #757083;
+    --cor4: #8A95A5;
+    --cor5: #B9C6AE;
+
 }
 
 @keyframes hide {
@@ -15,13 +19,15 @@
 
 
 body {
-    background-color: rgb(241, 241, 241);
+    background-color: var(--cor5);
 }
 
 
 main {
     max-width: 100vw;
     margin-top: calc(65px + 2%);
+    padding: 2rem 1rem;
+    background-color: white;
     
 }
 
@@ -42,17 +48,22 @@ main {
 }
 
 .titulo-page-center {
-    font-size: 1.3rem;
+    font-size: 1rem;
     text-align: center;
     font-weight: bold;
-    color: rgba(0, 0, 0, 0.418);
+    color: var(--cor1);
     
+}
+
+.btn-curso {
+    color: white;
+    background-color: var(--cor4);
 }
 
 .subtitulo-page-center {
     font-size: 1rem;
     text-align: center;
     font-weight: 400;
-    color: rgba(0, 0, 0, 0.658);
+    color: var(--cor3);
     
 }

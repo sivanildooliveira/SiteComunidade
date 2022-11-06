@@ -12,16 +12,17 @@
 {% block main %}
 
     
-    <h1 style="text-align: center;">Usuários</h1>
+    <h1 class="titulo-page-center"">Usuários</h1>
     <hr>
     {% for usuario in lista_usuarios %}
         
         <div class="user">
             <div class="avatar" style="background-image: url('{{ usuario.retur_foto_perfil() }}'); width: 80px; height: 80px; margin: 0px;"></div>
             <span>
-                <strong>{{ usuario.username }}</strong>
+                <strong>{{ usuario.username }}</strong> -- 
+                <a class="btn btn-posts" href="">Posts: {{ usuario.quant_posts() }}</a>
                 <br>{{ usuario.email }}
-                <br><a class="btn btn-success btn-posts" href="">Posts: {{ usuario.quant_posts() }}</a>
+                
 
             </span>
             
@@ -29,7 +30,7 @@
         <div class="cursos mt-1">
             {% for curso in usuario.cursos.split(";") %}
                 {% if curso not in ("", "não informado") %}
-                    <span> {{ curso }}</span>
+                    <span class="btn-curso"> {{ curso }}</span>
                 {% endif %}
             {% endfor %}
         </div>

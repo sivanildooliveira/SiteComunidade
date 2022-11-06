@@ -18,7 +18,11 @@ span strong {
 
 .btn-posts {
     width: max-content;
-    font-size: .8rem;
+    font-size: .7rem;
+    background-color: var(--cor3);
+    color: white;
+    font-weight: 500;
+    padding: .2rem 2rem;
 }
 
 .cursos {
@@ -28,10 +32,9 @@ span strong {
 }
 
 
-.cursos span {
+.cursos .btn-curso {
     display: inline-block;
     padding: 3px;
     font-size: .7rem;
     border-radius: 5px;
-    background-color: rgba(52, 165, 52, 0.205);
 }

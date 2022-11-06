@@ -36,7 +36,7 @@ header a:hover {
     padding: .5rem 1rem;
     border: none;
     font-size: 1rem;
-    border: 1px solid rgba(255, 255, 255, 0.514);
+    border: 1px solid rgba(255, 255, 255, 0.349);
     border-radius: 10px;
     cursor: pointer;
     gap: 1rem;
@@ -47,7 +47,7 @@ header a:hover {
 }
 
 #btn-menu.active {
-    background: rgb(25, 158, 69);
+    background: var(--cor4);
 }
 
 #hamburger {
@@ -132,7 +132,7 @@ header a:hover {
     }
 
     li a:hover {
-        background-color: rgba(0, 0, 0, 0.301);
+        background-color: var(--cor4);
     }
 
 

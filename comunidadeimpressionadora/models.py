@@ -23,6 +23,13 @@ class Usuarios(database.Model, UserMixin):
         return url_for('static', filename=f'fotos_perfil/{self.foto_perfil}')
 
     
+    def retur_bg(self):
+        if 'http' in self.bg_perfil:
+            return self.bg_perfil
+        else:
+            return url_for('static', filename=f'bg_perfil/{self.bg_perfil}')
+
+    
     def atualizar_cursos(self, form):
         lista_curso = []
         for campo in form:

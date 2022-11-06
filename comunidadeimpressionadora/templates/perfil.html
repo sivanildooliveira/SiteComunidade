@@ -7,7 +7,7 @@
 
 {% block main %}
 
-    <div id="pf" style="background: rgb(203, 253, 255) url('{{ bg_perfil }}') no-repeat fixed; background-size: cover;"></div>
+    <div id="pf" style="background-image: url('{{ current_user.retur_bg() }}');"></div>
     
     <div id="foto-name-edit">
 		<div id="img" class="avatar"  style="background-image: url('{{ current_user.retur_foto_perfil() }}')"></div>
@@ -41,7 +41,7 @@
 					Cursos <br>
 					{% for curso in current_user.cursos.split(";") %}
 						
-						<button class="btn btn-success disabled mt-2">{{ curso }}</button>
+						<button class="btn btn-curso disabled mt-2">{{ curso }}</button>
 						
 					{% endfor %}
 				</div>
