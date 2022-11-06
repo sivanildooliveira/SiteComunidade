@@ -47,7 +47,7 @@ header a:hover {
 }
 
 #btn-menu.active {
-    background: var(--cor4);
+    background: rgba(255, 255, 255, 0.144);
 }
 
 #hamburger {
@@ -132,7 +132,7 @@ header a:hover {
     }
 
     li a:hover {
-        background-color: var(--cor4);
+        background-color: rgba(255, 255, 255, 0.205);
     }
 
 
