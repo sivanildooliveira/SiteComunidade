@@ -71,7 +71,7 @@ class Post(database.Model):
 
 with app.app_context():
 
-    database.drop_all()
+    #database.drop_all()
     database.create_all()
 
     pass
