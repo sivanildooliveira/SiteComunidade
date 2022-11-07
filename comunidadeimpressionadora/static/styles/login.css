@@ -3,7 +3,8 @@
 
 .input {
     display: flex;
-    width: 60%;
+    width: 90%;
+    max-width: 800px;
     padding: 2px 2px 2px 5px;
     margin: 3vh auto;
     justify-content: space-between;
