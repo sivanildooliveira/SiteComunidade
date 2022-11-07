@@ -30,12 +30,12 @@ def usuarios():
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    form_login = FormLogin()
-    form_criarconta = FormCriarConta()
-    if form_login.validate_on_submit() and 'botao_submit_login' in request.form:
-        usuario = Usuarios.query.filter_by(email=form_login.lemail.data).first()     
-        if usuario and bcrypt.check_password_hash(usuario.senha, form_login.lsenha.data):
-            login_user(usuario, remember=form_login.lembrar_dados.data)        
+    form = FormLogin()
+    
+    if form.validate_on_submit():
+        usuario = Usuarios.query.filter_by(email=form.lemail.data).first()     
+        if usuario and bcrypt.check_password_hash(usuario.senha, form.lsenha.data):
+            login_user(usuario, remember=form.lembrar_dados.data)        
             flash(f'Você esta logado!', 'alert-success')        
             par_next = request.args.get('next')
             print(par_next)
@@ -47,29 +47,34 @@ def login():
             flash(f'Falha no login! E-mail ou Senha são Inválidos. Tente novamente.', 'alert-danger')
             
 
+    return render_template('login.html', form=form)
 
-    if form_criarconta.validate_on_submit() and 'botao_submit_criarconta' in request.form:
+    
+@app.route('/login/criar-conta', methods=['GET', 'POST'])
+def criar_conta():
+    form = FormCriarConta()
+
+    if form.validate_on_submit():
         par_next = request.args.get('next')
         #criar usuario
-        senha_criptografada = bcrypt.generate_password_hash(form_criarconta.senha.data)
+        senha_criptografada = bcrypt.generate_password_hash(form.senha.data)
         print(senha_criptografada)
-        usuario = Usuarios(username=form_criarconta.username.data.title(), email=form_criarconta.email.data, senha=senha_criptografada)
+        usuario = Usuarios(username=form.username.data.title(), email=form.email.data, senha=senha_criptografada)
         #adicionar usuario a sessao
         database.session.add(usuario)
         #comitar no banco de dados
         database.session.commit()
         
-        usuario = Usuarios.query.filter_by(email=form_criarconta.email.data).first()
+        usuario = Usuarios.query.filter_by(email=form.email.data).first()
         login_user(usuario)
-        flash(f'Bem Vindo {current_user.username}!', 'alert-success')
+        flash(f'Bem Vindo! Conta Criada para {current_user.username}!', 'alert-success')
 
         if par_next:
             return redirect(par_next)
         else:
             return redirect(url_for('home'))
-
-    return render_template('login.html', form_login=form_login, form_criarconta=form_criarconta)
-    
+            
+    return render_template('criar_conta.html', form=form)
 
 @app.route('/sair')
 def sair():

@@ -1,0 +1,45 @@
+@charset "UTF-8";
+
+
+.input {
+    display: flex;
+    width: 60%;
+    padding: 2px 2px 2px 5px;
+    margin: 3vh auto;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.137);
+}
+
+.i-email, .i-senha {
+    width: 85%;
+    padding: 5px;
+    border: none;
+    border-radius: 0px 10px 10px 0px;
+    outline: none;
+}
+
+.label {
+    width: 15%;
+    font-size: .8rem;
+}
+
+.i-email::placeholder {
+    color: rgb(255, 100, 100);
+}
+
+.lembrar {
+    display: block;
+    width: max-content;
+    margin: auto;
+}
+
+.botoes {
+    display: flex;
+    width: max-content;
+    margin: 3rem auto;
+    gap: 2rem;
+    align-items: center;
+}

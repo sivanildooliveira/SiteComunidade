@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+
+.botoes {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    margin-top: 3rem;
+    gap: 2rem;
+}

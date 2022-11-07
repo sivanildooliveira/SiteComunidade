@@ -13,12 +13,13 @@
     <nav id="nav">
         <div id="lmenu">
             <ul id="menu-links">
+                {% if current_user.is_authenticated %}
                 <li><a href="{{ url_for('home') }}">Início</a></li>
                 <li><a href="{{ url_for('usuarios') }}">Usuários</a></li>
                 <li><a href="{{ url_for('contato') }}">Contatos</a></li>
             </ul>
             <ul id="menu-login">
-                {% if current_user.is_authenticated %}
+                
 
                     <li><a href="{{ url_for('criar_post') }}">Criar Post</a></li>
                     <li><a href="{{ url_for('perfil') }}">Meu Perfil</a></li>
@@ -27,7 +28,7 @@
                 {% else %}
 
                     <li><a href="{{ url_for('login') }}">Login</a></li>
-                    <li><a href="{{ url_for('login') }}">Criar Conta</a></li>
+                    <li><a href="{{ url_for('criar_conta') }}">Criar Conta</a></li>
 
                 {% endif %}
             </ul>
