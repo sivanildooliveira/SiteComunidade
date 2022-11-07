@@ -1,5 +1,6 @@
 @charset "UTF-8";
 
+/* all */
 
 :root {
     --cor1: #47A8BD;
@@ -66,4 +67,155 @@ main {
     font-weight: 400;
     color: var(--cor3);
     
+}
+
+
+.avatar {
+    margin: auto;
+    background-color: white;
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 1px 0px 2px rgba(0, 0, 0, 0.295);
+}
+
+/* criar post */
+
+
+.criar-post .campo-input {
+	position: relactive;
+	display: flex;
+	width: 100%;
+}
+
+
+.criar-post .label {
+	position: absolute;
+	color: rgba(0,0,0,.3);
+	padding: .1rem .2rem;
+	margin-left: .5rem;
+	transition: .3s;
+}
+
+.criar-post .input {
+	width: 100%;
+	border: 1px solid rgba(0,0,0,.3);
+	border-radius: 5px;
+	outline-color: var(--cor1);
+	padding: .5rem;
+}
+
+
+.criar-post label.active {
+	font-size: .6rem;
+	color: var(--cor1);
+	transform: translate(0%, -50%);
+	background-color: white;
+}
+
+
+.criar-post .corpo {
+    height: 10rem;
+}
+
+.criar-post .btn-criar {
+	background: var(--cor1);
+	border: 1px solid var(--cor5);
+	color: white;
+}
+
+
+/* forma do post */
+
+.post {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.212);
+}
+
+.post .foto-nome-cursos-data  {
+    display: flex;
+    padding: 5px;
+}
+
+.post .avatar {
+    width: 70px;
+    height: 70px;
+    margin: 0px;
+}
+
+.post .nome-cursos-data {
+    width: calc(100% - 70px);
+    
+}
+
+
+.post .nome {
+    display: block;
+    color: rgba(0, 0, 0, 0.486);
+    font-size: 1.2rem;
+}
+
+
+.post .data-hora {
+    display: block;
+    font-size: .8rem;
+    color: rgba(0, 0, 0, 0.5);
+}
+
+.post .div-cursos {
+    display: flex;
+    gap: .5rem;
+    overflow-x: scroll;
+}
+
+.post .div-cursos::-webkit-scrollbar {
+    display: none;
+}
+
+.post .cursos {
+    padding: 3px 5px;
+    font-size: .6rem;
+    font-weight: bold;
+    border-radius: 5px;
+    color: white;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    background-color: var(--cor4);
+}
+
+
+.post hr {
+    margin: 2px;
+    color: rgba(0, 0, 0, 0.315);
+}
+
+.post .titulo {
+    font-weight: bold;
+    font-size: 1.3rem;
+    color: rgba(0, 0, 0, 0.377);
+}
+
+.post .corpo{
+    font-size: .95rem;
+    white-space: -moz-pre-wrap;
+    white-space: -pre-wrap;
+    white-space: -o-pre-wrap;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+.post .roda-pe  {
+    display: flex;
+    justify-content: right;
+    gap: 10px;
+
+}
+
+
+.post .roda-pe a, .post .roda-pe button {
+    width: auto;
 }
