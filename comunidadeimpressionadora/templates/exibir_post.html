@@ -1,120 +1,215 @@
 {% extends 'base.html' %}
 
     {% block head %}
+
         <link rel="stylesheet" href="{{ url_for('static', filename='styles/exibir_post.css') }}">
-        <link rel="stylesheet" href="{{ url_for('static', filename='styles/post.css') }}">
+
     {% endblock %}
 
     {% block main %}
+
         <br>
+
         <div id="post" class="row border p-2 post">
+
             <div class="row">
+
                 <div class="avatar" style="background-image: url('{{ post.autor.retur_foto_perfil() }}');"></div>
+
                 <div class="nome-cursos-data">
+
                     <strong class="nome">{{ post.autor.username }}</strong>
+
                     <small class="data-hora"> Data de Publicação: {{ post.data_criacao.strftime("%d/%m/%Y - %H:%M") }}</small>
+
                     <div class="div-cursos">
+
                         {% for curso in post.autor.cursos.split(";") %}
+
                             <span class="mt-1 cursos">{{ curso }}</span>
+
                         {% endfor %}
+
                     </div>
+
                 </div>
+
             </div>
+
             <hr>
+
             <div class="row">
+
                 <strong class="mb-1 titulo">{{ post.titulo }}</strong>
+
                 <p class="corpo">{{ post.corpo }} </p>
+
             </div>
+
             <div class="row roda-pe">
+
                 {% if current_user.id == post.autor.id %}
+
                     <a id="btn-editar" href="#edicao" class="btn btn-primary" >Editar</a>
+
                     <button type="button" class="btn text-danger" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Excluir</button>
+
                 {% endif %}
+
                 
+
             </div>
+
         </div>
+
         
 
         {% if current_user.id == post.autor.id %}
 
-            <form id="edicao" method="POST" action="">
-                {{ form.csrf_token }}
-                <legend class="tit-up">Editar Post</legend>
-                <hr>
-                <fieldset>
-        
-                    <div class="form-group">
-                        {{ form.titulo.label(class="form-control-label") }}
-        
-                        {% if form.titulo.errors %}
-                            {{ form.titulo(class="form-control is-invalid") }}
-                            
-                                <div class="invalid-feedback">
-                                    {{ form.titulo.errors[0] }}
-                                </div>
-                        {% else %}
-                            {{ form.titulo(class="form-control titulo") }}
-                        {% endif %}
-                    </div>
-                    <div class="form-group">
-                        {{ form.corpo.label(class="form-control-label") }}
-        
-                        {% if form.corpo.errors %}
-                            {{ form.corpo(class="form-control is-invalid") }}
-                            
-                                <div class="invalid-feedback">
-                                    {{ form.corpo.errors[0] }}
-                                </div>
-                        {% else %}
-                            {{ form.corpo(class="form-control corpo") }}
-                        {% endif %}
-                    </div>
-                </fieldset>
-        
-                {{ form.botao_submit(class="btn btn-primary mt-2", value="Confirmar edição") }}
-                
-            </form> 
+            <form id="edicao" class="criar-post mt-4" method="POST" action="">
+
+        		{{ form.csrf_token }}        
+
+	            <div class="campo-input mb-4">
+
+	            	{{ form.titulo(id="titulo", class="input titulo", onfocus="foC('titulo')", onblur="foC('titulo')") }}
+
+	                {{ form.titulo.label(class="label active", id="l-titulo") }}
+
+	                
+
+				</div>
+
+				
+
+	                {% if form.titulo.errors %}
+
+	                    {{ form.titulo(class="form-control is-invalid") }}
+
+	                    
+
+	                        <div class="invalid-feedback">
+
+	                            {{ form.titulo.errors[0] }}
+
+	                        </div>
+
+	                    
+
+	                {% endif %}
+
+	            
+
+	            <div class="campo-input">
+
+	           	 {{ form.corpo(id="corpo", class="input corpo", onfocus="foC('corpo')", onblur="foC('corpo')") }}
+
+	                {{ form.corpo.label(class="label active", id="l-corpo") }}
+
+	                
+
+				</div>
+
+				
+
+	                {% if form.corpo.errors %}
+
+	                    {{ form.corpo(class="form-control is-invalid") }}
+
+	                    
+
+	                        <div class="invalid-feedback">
+
+	                            {{ form.corpo.errors[0] }}
+
+	                        </div>
+
+	                    
+
+	                {% endif %}
+
+	            
+
+	       
+
+	
+
+	        	{{ form.botao_submit(class="btn mt-2 btn-criar", value="Salvar Edição") }}
+
+	   	     
+
+	    	</form>
 
             <!-- Modal -->
+
             <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+
                 <div class="modal-dialog modal-dialog-centered">
+
                 <div class="modal-content">
+
                     <div class="modal-header">
+
                     <h5 class="modal-title" id="staticBackdropLabel">Apagar Post?</h5>
+
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+
                     </div>
+
                     <div class="modal-body">
+
                         Deseja realmente apagar esse Post? essa ação é inrreversível!
+
                     </div>
+
                     <div class="modal-footer">
+
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+
                     <form method="post" action="{{ url_for('excluir_post', id_post=post.id) }}">
+
                         <button type="submit" class="btn btn-primary">Sim</button>
+
                     </form>
+
                     
+
                     </div>
+
                 </div>
+
                 </div>
+
             </div>
 
         {% endif %}
+
         
+
     {% endblock %}
 
     {% block script %}
+
         
+
     <script>
+
         btn_editar = document.getElementById("btn-editar")
 
         function abrirEdicao() {
+
             const edicao = document.getElementById("edicao")
+
             const corpo = document.getElementById("post")
 
             edicao.classList.toggle("active")
+
             post.classList.toggle("inactive")
+
         }
 
         btn_editar.addEventListener("click", abrirEdicao)
+
     </script>
 
     {% endblock %}
