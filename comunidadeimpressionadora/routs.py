@@ -1,6 +1,6 @@
 
 from flask import render_template, redirect, url_for, request, flash, abort
-from comunidadeimpressionadora import app, database, bcrypt
+from comunidadeimpressionadora import app, database#, bcrypt
 from comunidadeimpressionadora.forms import FormCriarConta, FormLogin, FormEditarPerfil, FormCriarPost
 from comunidadeimpressionadora.functionss import salvar_imagem
 from comunidadeimpressionadora.models import Usuarios, Post
@@ -34,7 +34,7 @@ def login():
     
     if form.validate_on_submit():
         usuario = Usuarios.query.filter_by(email=form.lemail.data).first()     
-        if usuario and bcrypt.check_password_hash(usuario.senha, form.lsenha.data):
+        if usuario and usuario.senha == form.lsenha.data:# bcrypt.check_password_hash(usuario.senha, form.lsenha.data):
             login_user(usuario, remember=form.lembrar_dados.data)        
             flash(f'Você esta logado!', 'alert-success')        
             par_next = request.args.get('next')
@@ -57,7 +57,7 @@ def criar_conta():
     if form.validate_on_submit():
         par_next = request.args.get('next')
         #criar usuario
-        senha_criptografada = bcrypt.generate_password_hash(form.senha.data)
+        senha_criptografada = form.senha.data#bcrypt.generate_password_hash(form.senha.data)
         print(senha_criptografada)
         usuario = Usuarios(username=form.username.data.title(), email=form.email.data, senha=senha_criptografada)
         #adicionar usuario a sessao

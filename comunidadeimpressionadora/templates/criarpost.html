@@ -1,45 +1,47 @@
 {% extends 'base.html' %}
 
-{% block head %}
-    <link rel="stylesheet" href="{{ url_for('static', filename='styles/criarpost.css') }}">
-{% endblock %}
+
 
 {% block main %}
     <h1 class="titulo-page-center">Criar Post</h1>
     <hr>
-    <form method="POST" action="">
+    <form class="criar-post" method="POST" action="">
         {{ form.csrf_token }}
-        <fieldset>
+        
 
-            <div class="form-group">
-                {{ form.titulo.label(class="form-control-label") }}
-
+            <div class="campo-input mb-4">
+            	{{ form.titulo(id="titulo", class="input titulo", onfocus="foC('titulo')", onblur="foC('titulo')") }}
+                {{ form.titulo.label(class="label", id="l-titulo") }}
+                
+			</div>
+			
                 {% if form.titulo.errors %}
                     {{ form.titulo(class="form-control is-invalid") }}
                     
                         <div class="invalid-feedback">
                             {{ form.titulo.errors[0] }}
                         </div>
-                {% else %}
-                    {{ form.titulo(class="form-control titulo") }}
+                    
                 {% endif %}
-            </div>
-            <div class="form-group">
-                {{ form.corpo.label(class="form-control-label") }}
-
+            
+            <div class="campo-input">
+           	 {{ form.corpo(id="corpo", class="input corpo", onfocus="foC('corpo')", onblur="foC('corpo')") }}
+                {{ form.corpo.label(class="label", id="l-corpo") }}
+                
+			</div>
+			
                 {% if form.corpo.errors %}
                     {{ form.corpo(class="form-control is-invalid") }}
                     
                         <div class="invalid-feedback">
                             {{ form.corpo.errors[0] }}
                         </div>
-                {% else %}
-                    {{ form.corpo(class="form-control corpo") }}
+                    
                 {% endif %}
-            </div>
-        </fieldset>
+            
+       
 
-        {{ form.botao_submit(class="btn btn-primary mt-2") }}
+        {{ form.botao_submit(class="btn mt-2 btn-criar") }}
         
     </form>
 
