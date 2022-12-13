@@ -1,0 +1,81 @@
+@charset "UTF-8";
+
+main {
+    display: block;
+    width: 100%;
+  }
+  
+  .b-v {
+    display: block;
+    margin-top: 3rem;
+    text-align: center;
+  }
+  
+  .b-v h1 {
+    font-size: 1.5rem;
+    margin: 10px 0px;
+    line-height: 1rem
+  }
+  
+  .b-v p {
+    font-size: .8rem;
+    
+  }
+  
+  .principal {
+    display: block;
+    width: 90%;
+    margin: 3rem auto auto auto;
+    
+  }
+  
+  .principal ul {
+    display: flex;
+    padding: .5rem;
+    list-style: none;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 2rem;
+    
+    
+  }
+  
+  .principal ul li {
+    width: calc(100% / 5);
+    min-width: 300px;
+    
+    padding: 0px .5rem;
+    border: 1px solid #00000014;
+  }
+  
+  .principal ul li a {
+    text-decoration: none;
+    color: currentColor;
+    padding: 0px;
+    border: none;
+  }
+  
+  .card {
+    display: block;
+    max-height: 250px;
+    border: none;
+    
+  }
+  
+  .card .titulo h1 {
+    margin: 5px 0px;
+    font-size: 1rem;
+    border-bottom: 1px solid black;
+  }
+  
+  .card .titulo h1 i {
+    margin-right: 10px;
+    
+  }
+  .card p {
+    width: 80%;
+    margin: .7rem auto;
+    font-size: .7rem;
+    text-justify: justify;
+  }

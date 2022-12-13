@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{% block head %}
+
+<style>
+	.nav-tabs {
+		display: flex;
+		justify-content: space-around;
+		padding: .5rem auto;
+    	background-color: var(--cor3);
+	}
+	
+	.nav-link {
+		color: var(--corb);
+		font-weight: bold;
+		font-size: .8rem;
+    	width: auto;
+	}
+	
+</style>
+
+{% endblock %}
+
+{% block main %}
+         
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a id="tbl-1" onclick="attTab('1')" class="nav-link active" href="{{ url_for('servicos_ativos') }}" target="tela-serv">Serviços Ativos</a>
+    </li>
+    <li class="nav-item">
+      <a id="tbl-2" onclick="attTab('2')" class="nav-link" href="{{ url_for('servicos_baixados') }}" target="tela-serv">Serviços Baixados</a>
+    </li>
+    <li class="nav-item">
+      <a id="tbl-3" onclick="attTab('3')" class="nav-link" href="{{ url_for('servicos_retornos') }}" target="tela-serv">Retorno</a>
+    </li>
+  </ul>
+
+  <iframe id="tela-serv" name="tela-serv" src="{{ url_for('servicos_ativos') }}" frameborder="0" style="width: 100%; height: 99.5%;">
+    seu navegador não e Compativel
+  </iframe>
+    
+{% endblock %}
+
+{% block script %}
+  <script>
+
+    function attTab(numero) {
+      for (var i = 1; i < 5; i++) {
+        tt = document.getElementById('tbl-'+String(i))
+        tt.classList.remove('active')
+        if (tt === document.getElementById('tbl-'+numero)) {
+          tt.classList.toggle('active')
+        }
+      }
+     
+     
+    }
+
+  </script>
+{% endblock %}

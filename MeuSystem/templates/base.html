@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/padroes.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/base.css') }}">
+
+    {% block head %}
+    {% endblock %}
+
+</head>
+<body>
+
+    <header id="hea" class="">
+        
+        <img id="logo" src="{{ url_for('static', filename='imagens/logo.png') }}" alt="logo">
+        
+
+
+        <button id="btn-menu">
+           <span id="hamburger"></span>
+        </button>
+
+    </header>
+
+        <main>
+
+        <div id="cabecalho">
+            <span>Sivanildo Oliveira</span>
+        </div>
+
+        <nav id="nav">
+            <ul id="menu">
+                <li><a onclick="toggleMenu('click')" href="{{ url_for('home') }}" target='tela'><span class="bi bi-house-fill"></span>    HOME</a></li>
+
+                <li><a onclick="toggleMenu('click')" href="{{ url_for('servicos') }}" target='tela'><span class="bi bi-tools"></span>    SERVIÇOS</a></li>
+
+                <li><a onclick="toggleMenu('click')" href="{{ url_for('mostrar', pagina='clientes') }}" target='tela'><span class="bi bi-people-fill"></span>    CLIENTES</a></li>
+
+                <li><a onclick="toggleMenu('click')" href="" target='tela'><span class="bi bi-cash-coin"></span>    TABELA DE VALORES</a></li>
+
+                <li><a onclick="toggleMenu('click')" href="" target='tela'><span class="bi bi-currency-dollar"></span>    FINANCEIRO</a></li>
+
+                <li><a onclick="toggleMenu('click')" href="" target='tela'><span class="bi bi-house-fill"></span>    ESTOQUE</a></li>
+
+                <li><a class="logout" onclick="toggleMenu('click')" href="{{ url_for('login') }}">Logout</a></li>
+            </ul>
+        </nav>
+
+        <div id="div_main">
+            {% block main %}
+            {% endblock %}
+            {% block script %}
+            {% endblock %}
+        </div>
+
+        
+    </main>
+    
+	<script src=
+"https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
+
+    <script>
+        const btn_menu = document.getElementById("btn-menu")
+        
+        function toggleMenu(event) {
+            if (event.type === 'touchstart') event.preventDefault();
+
+            const hea = document.getElementById("hea")
+            const nav = document.getElementById("nav")
+
+            hea.classList.toggle('activ')
+            nav.classList.toggle('activ')
+            
+            
+
+        }
+        
+      
+
+        btn_menu.addEventListener("click", toggleMenu)
+    </script>
+</body>
+</html>
